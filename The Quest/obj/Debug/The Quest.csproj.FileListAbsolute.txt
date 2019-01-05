@@ -1,0 +1,10 @@
+C:\Users\cario\Documents\Visual Studio 2017\Projects\The Quest\The Quest\obj\Debug\The Quest.csprojAssemblyReference.cache
+C:\Users\cario\Documents\Visual Studio 2017\Projects\The Quest\The Quest\obj\Debug\The_Quest.Properties.Resources.resources
+C:\Users\cario\Documents\Visual Studio 2017\Projects\The Quest\The Quest\obj\Debug\The Quest.csproj.GenerateResource.cache
+C:\Users\cario\Documents\Visual Studio 2017\Projects\The Quest\The Quest\obj\Debug\The Quest.csproj.CoreCompileInputs.cache
+C:\Users\cario\Documents\Visual Studio 2017\Projects\The Quest\The Quest\bin\Debug\The Quest.exe.config
+C:\Users\cario\Documents\Visual Studio 2017\Projects\The Quest\The Quest\bin\Debug\The Quest.exe
+C:\Users\cario\Documents\Visual Studio 2017\Projects\The Quest\The Quest\bin\Debug\The Quest.pdb
+C:\Users\cario\Documents\Visual Studio 2017\Projects\The Quest\The Quest\obj\Debug\The_Quest.Form1.resources
+C:\Users\cario\Documents\Visual Studio 2017\Projects\The Quest\The Quest\obj\Debug\The Quest.exe
+C:\Users\cario\Documents\Visual Studio 2017\Projects\The Quest\The Quest\obj\Debug\The Quest.pdb
