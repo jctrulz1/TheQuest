@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Drawing;
+
+
 namespace The_Quest
 {
 	class Sword : Weapon
@@ -16,7 +19,8 @@ namespace The_Quest
 
 		public override void Attack(Direction direction, Random random)
 		{
-			if(DamageEnemy(direction, 10, 3, random))
+			int radius = 10;
+			if(DamageEnemy(direction, radius, 3, random))
 			{
 				return;
 			}
@@ -26,7 +30,7 @@ namespace The_Quest
 				direction = Direction.Up;
 			}
 
-			if(DamageEnemy(direction, 10, 3, random))
+			if(DamageEnemy(direction, radius, 3, random))
 			{
 				return;
 			}
@@ -36,7 +40,7 @@ namespace The_Quest
 				direction = Direction.Left;
 			}
 
-			DamageEnemy(direction, 10, 3, random);
+			DamageEnemy(direction, radius, 3, random);
 		}
 	}
 }

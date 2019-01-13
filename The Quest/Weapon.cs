@@ -12,7 +12,7 @@ namespace The_Quest
 	{
 		public abstract string Name { get; }
 
-		public bool PickedUp { get; set; }
+		public bool PickedUp { get; private set; }
 
 		public Weapon(Game game, Point location) : base(game, location)
 		{
@@ -44,18 +44,6 @@ namespace The_Quest
 			}
 
 			return false;
-		}
-
-		private Point Move(Direction direction, Point target, Rectangle Boundaries)
-		{
-			Location = target;
-			Point newLocation = Move(direction, Boundaries);
-			return newLocation;
-		}
-
-		private bool Nearby(Point location, Point target, int distance)
-		{
-			
 		}
 	}
 }

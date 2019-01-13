@@ -4,15 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Drawing;
+
 namespace The_Quest
 {
 	class Player : Mover
 	{
 		private Weapon equippedWeapon;
-		
-		public int HitPoints { get; private set; }
 
 		private List<Weapon> inventory = new List<Weapon>();
+
+		public int HitPoints { get; private set; }
 
 		public IEnumerable<string> Weapons
 		{
@@ -32,6 +34,7 @@ namespace The_Quest
 			:base(game, location)
 		{
 			HitPoints = 10;
+			equippedWeapon = null;
 		}
 
 		public void Move(Direction direction)
@@ -39,11 +42,20 @@ namespace The_Quest
 			Location = Move(direction, game.Boundaries);
 			if(!game.WeaponInRoom.PickedUp)
 			{
-				// See if weapon is nearby, and possibly pick it up
-				// If so, pick it up and add it to the player's inventory.
-				// If it's the only weapon, equip it immediately
-			
-				
+				if(Nearby(game.WeaponInRoom.Location, Location, 50))
+				{
+					if(!inventory.Contains(game.WeaponInRoom))
+					{
+						inventory.Add(game.WeaponInRoom);
+
+						if(inventory.Count == 1)
+						{
+							equippedWeapon = game.WeaponInRoom;
+						}
+
+						game.WeaponInRoom.PickUpWeapon();
+					}
+				}
 			}
 		}
 
@@ -70,7 +82,10 @@ namespace The_Quest
 
 		public void Attack(Direction direction, Random random)
 		{
-
+			if(equippedWeapon != null)
+			{
+				equippedWeapon.Attack(direction, random);
+			}
 		}
 
 		public bool ContainWeapon(string weaponName)

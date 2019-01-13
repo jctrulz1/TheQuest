@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
+using System.Windows.Forms;
+
 namespace The_Quest
 { 
 	class Game
@@ -12,7 +14,10 @@ namespace The_Quest
 		public IEnumerable<Enemy> Enemies { get; private set; }
 		public Weapon WeaponInRoom { get; private set; }
 
+		public bool Victory { get; set; }
+
 		private Player player;
+		public int PlayerHitPoints { get => player.HitPoints;}
 		public Point PlayerLocation { get => player.Location; }
 		public IEnumerable<string> PlayerWeapons { get => player.Weapons; }
 
@@ -23,6 +28,7 @@ namespace The_Quest
 		public Game(Rectangle boundaries)
 		{
 			Boundaries = boundaries;
+			Victory = false;
 			player = new Player(this, new Point(boundaries.Left + 10, boundaries.Top + 70));
 		}
 
@@ -80,6 +86,63 @@ namespace The_Quest
 						new Bat(this, GetRandomLocation(random))
 					};
 					WeaponInRoom = new Sword(this, GetRandomLocation(random));
+					break;
+
+				case 2:
+					Enemies = new List<Enemy>()
+					{
+						new Ghost(this, GetRandomLocation(random))
+					};
+					WeaponInRoom = new BluePotion(this, GetRandomLocation(random));
+					break;
+				case 3:
+					Enemies = new List<Enemy>()
+					{
+						new Ghoul(this, GetRandomLocation(random))
+					};
+					WeaponInRoom = new Bow(this, GetRandomLocation(random));
+					break;
+				case 4:
+					Enemies = new List<Enemy>()
+					{
+						new Bat(this, GetRandomLocation(random)),
+						new Ghost(this, GetRandomLocation(random))
+					};
+					if(WeaponInRoom.PickedUp && !CheckPlayerInventory("Blue Potion"))
+					{
+						WeaponInRoom = new BluePotion(this, GetRandomLocation(random));
+					}
+					break;
+				case 5:
+					Enemies = new List<Enemy>()
+					{
+						new Bat(this, GetRandomLocation(random)),
+						new Ghoul(this, GetRandomLocation(random))
+					};
+					WeaponInRoom = new RedPotion(this, GetRandomLocation(random));
+					break;
+				case 6:
+					Enemies = new List<Enemy>()
+					{
+						new Ghost(this, GetRandomLocation(random)),
+						new Ghoul(this, GetRandomLocation(random))
+					};
+					WeaponInRoom = new Mace(this, GetRandomLocation(random));
+					break;
+				case 7:
+					Enemies = new List<Enemy>()
+					{
+						new Ghost(this, GetRandomLocation(random)),
+						new Ghoul(this, GetRandomLocation(random))
+					};
+					if(WeaponInRoom.PickedUp && CheckPlayerInventory("Red Potion"))
+					{
+						WeaponInRoom = new RedPotion(this, GetRandomLocation(random));
+					}
+					break;
+				default:
+					Victory = true;
+					Application.Exit();
 					break;
 			}
 		}

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Drawing;
+
 namespace The_Quest
 {
 	class BluePotion : Weapon, IPotion
@@ -19,9 +21,11 @@ namespace The_Quest
 
 		public override void Attack(Direction direction, Random random)
 		{
-			Used = true;
-
-			game.IncreasePlayerHealth(5, random);	
+			if(!Used)
+			{
+				game.IncreasePlayerHealth(5, random);
+				Used = true;
+			}
 		}
 	}
 }

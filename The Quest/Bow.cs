@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Drawing;
+
 namespace The_Quest
 {
 	class Bow : Weapon
 	{
-		public override string Name => "Arrow";
+		public override string Name => "Bow";
 
 		public Bow(Game game, Point location) : base(game, location)
 		{ }

@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Windows.Forms;
+
+using System.Drawing;
+
 namespace The_Quest
 {
 	abstract class Enemy : Mover
@@ -38,12 +42,16 @@ namespace The_Quest
 		{
 			Direction playerDirection = FindPlayerDirection(game.PlayerLocation);
 
-			Move(playerDirection, game.Boundaries);
+			Location = Move(playerDirection, game.Boundaries);
 		}
 
 		public void Hit(int maxDamage, Random random)
 		{
 			HitPoints -= random.Next(1, maxDamage);
+			if(HitPoints < 0)
+			{
+				HitPoints = 0;
+			}
 		}
 
 		protected bool NearPlayer()
@@ -54,11 +62,11 @@ namespace The_Quest
 		protected Direction FindPlayerDirection(Point playerLocation)
 		{
 			Direction directionToMove;
-			if(playerLocation.X > Location.X + 10)
+			if(playerLocation.X > Location.X + 50)
 				directionToMove = Direction.Right;
-			else if(playerLocation.X < Location.X - 10)
+			else if(playerLocation.X < Location.X - 50)
 				directionToMove = Direction.Left;
-			else if(playerLocation.Y < Location.Y - 10)
+			else if(playerLocation.Y < Location.Y - 50)
 				directionToMove = Direction.Up;
 			else
 				directionToMove = Direction.Down;

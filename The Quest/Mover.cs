@@ -24,7 +24,12 @@ namespace The_Quest
 
 		public bool Nearby(Point locationToCheck, int distance)
 		{
-			if(Math.Abs(Location.X - locationToCheck.X) < distance && (Math.Abs(Location.Y - locationToCheck.Y) < distance))
+			return Nearby(locationToCheck, Location, distance);
+		}
+
+		public bool Nearby(Point locationToCheck, Point target, int distance)
+		{
+			if(Math.Abs(target.X - locationToCheck.X) < distance && (Math.Abs(target.Y - locationToCheck.Y) < distance))
 			{
 				return true;
 			}
@@ -36,7 +41,12 @@ namespace The_Quest
 
 		public Point Move(Direction direction, Rectangle boundaries)
 		{
-			Point newLocation = Location;
+			return Move(direction, Location, boundaries);
+		}
+
+		public Point Move(Direction direction, Point target, Rectangle boundaries)
+		{
+			Point newLocation = target;
 			switch(direction)
 			{
 				case Direction.Up:

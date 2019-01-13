@@ -64,7 +64,6 @@
     <Compile Include="Mace.cs" />
     <Compile Include="Mover.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedPotion.cs" />

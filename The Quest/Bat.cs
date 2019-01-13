@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Drawing;
+
 namespace The_Quest
 {
 	class Bat : Enemy
@@ -36,7 +38,7 @@ namespace The_Quest
 		{
 			Direction randomDirection = (Direction)random.Next(4);
 
-			Move(randomDirection, game.Boundaries);
+			Location = Move(randomDirection, game.Boundaries);
 		}
 	}
 }
